@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: LearnMyBatis
+server:
+  port: 8888
