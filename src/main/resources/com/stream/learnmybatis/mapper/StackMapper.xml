@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stream.learnmybatis.mapper.StackMapper">
+    <select id="dynamicSelect" resultType="com.stream.learnmybatis.pojo.StringPiece">
+        select * from string_stack
+        <where>
+            <if test="value != null">
+                value = #{value}
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByIds">
+        delete from string_stack
+        <where>
+            id in
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>
